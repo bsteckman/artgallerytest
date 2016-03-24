@@ -1,0 +1,59 @@
+<html ng-app="art">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Art Gallery</title>
+    <link rel="stylesheet" href="bower_components\bootstrap\dist\css\bootstrap.css">
+    <link rel="stylesheet" href="bower_components\bootstrap\dist\css\bootstrap-theme.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="container-fluid" ng-controller="ArtController">
+
+    <div ng-show="!add" class="panel panel-primary">
+        <div class="panel-heading">
+            <h1> Add New Art </h1>
+            
+        </div>
+        <div class="panel-body">
+        <img id="galpic" class="img-responsive" src="{{art.url}}">
+        <h2>Name: {{art.name}}</h2>
+        <h3>Artist: {{art.artist}}</h2>
+        <label for="name"> Name: </label>
+        <input type="text" ng-model="art.name" class="form-control" />
+        <label for="artist"> Artist: </label>
+        <input type="text" ng-model="art.artist" class="form-control" />
+        <label for="url"> URL:</label>
+        <input type="url" ng-model="art.url" class="form-control">
+        <button ng-click="toGallery()">Submit</button>
+            
+        </div>
+
+    </div>
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h1>Gallery<button class="btn btn-success pull-right" ng-click="showForm()">Add New Art</button></h1>
+        </div>
+        <div ng-repeat="item in gallery">
+            <div class="col-sm-4">
+                <div class="row">
+                    <button class="btn btn-sm" style: ng-click="removeItem($index)">x</button>
+                    <img id="galpic" class="img-responsive"  src="{{item.url}}" alt="{{item.name}}">
+                    <h2>Name: {{item.name}}</h2>
+                    <h3>Artist: {{item.artist}}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="bower_components\angular\angular.js"></script>
+    <script src="bower_components\jquery\dist\jquery.js"></script>
+    <script src="bower_components\bootstrap\dist\js\bootstrap.js"></script>
+    <script src="init.js"></script>
+    <script src="art-controller.js"></script>
+</body>
+
+</html>
